@@ -8,6 +8,10 @@ const currentOperandTextElement  = document.querySelector('[data-current-operand
 var currentOperand = "";
 var previousOperand = "";
 
+function strip(number) {
+    return (parseFloat(number).toPrecision(15));
+}
+
 function clear() {
     currentOperand = "";
     previousOperand = "";
@@ -58,16 +62,16 @@ function calculate() {
     var num2 = Number(currentOperand);
     var operation = previousOperand.slice(previousOperand.length - 1);
     if (operation === "+") {
-        currentOperand = num1 + num2;
+        currentOperand = parseFloat(strip(num1 + num2));
         previousOperand = "";
     } else if (operation === "-") {
-        currentOperand = num1 - num2;
+        currentOperand = parseFloat(strip(num1 - num2));
         previousOperand = "";
     } else if (operation === "*") {
-        currentOperand = num1 * num2;
+        currentOperand = parseFloat(strip(num1 * num2));
         previousOperand = "";
     } else if (operation === "÷") {
-        currentOperand = num1 / num2;
+        currentOperand = parseFloat(strip(num1 / num2));
         previousOperand = "";
     }
 }
